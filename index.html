@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sokoban</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    .createStage{
+        width: 100%;
+        position: fixed;
+        height: 100vh;
+        overflow-y: auto;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.671);
+        height: 800px;
+        z-index: 99999;
+        padding:0 40px;
+    }
+    .opacity-50{
+        opacity: .7;
+    }
+    .text-white{
+        color: white;
+    }
+    .block{
+        display: block;
+    }
+    .createBtn{
+        padding: 5px 15px;
+        margin: 30px;
+        cursor: pointer;
+    }
+
+</style>
+<body>
+    <button class="createBtn">Create New Stage</button>
+    <div class="createStage hidden text-white">
+        <div class="cancel" style="position: absolute;top: 10px; left: 10px;background-color: white;padding:8px 4px; color:black; display:inline-block;margin-top: 10px; cursor: pointer;">Cancel</div>
+        <div>
+            <div class="flex">
+                <div style="padding:15px 7px;">
+                    <span style="font-weight: bold;">Colums:</span> <span style="margin-left: 5px;"><input style="padding: 8px 5px; width: 70px; outline: none;" class="stageCol" type="number" value="18"></span>
+                </div>
+                <div style="padding:15px 7px;">
+                    <span style="margin-right: 5px;"><input style="padding: 8px 5px; width: 70px; outline: none;" class="stageRow" type="number" value="10"></span><span style="font-weight: bold;"> :rows</span>
+                </div>
+            </div>
+          <div class="flex" style="margin: 10px 0;">
+            <button class="AddRowCOl" style="padding: 3px; cursor: pointer;">AddRowCOl</button>
+            <div style="margin: 0 15px;">
+                Add Element:
+                <select class="yourChoose" style="padding: 3px; outline: none; cursor: pointer;">
+                    <option value="path" selected >Add items</option>
+                    <option value="path">path</option>
+                    <option value="box">box</option>
+                    <option value="player">player</option>
+                    <option value="target">Target</option>
+                  </select>
+            </div>
+            <div style="margin: 0 15px;">
+                Remove Element:
+                <select class="yourChooseRemove" style="padding: 3px; outline: none; cursor: pointer;">
+                    <option value="path" selected >Remove items</option>
+                    <option value="path">path</option>
+                    <option value="box">box</option>
+                    <option value="player">player</option>
+                    <option value="target">Target</option>
+                  </select>
+            </div>
+            <button class="removeAll" style="background: white; color:black; margin: 0  15px 0 0; padding: 0 5px; display: flex; align-items: center;">Remove all</button>
+            <div style="margin: 0 15px;">
+                Select level:
+                <select class="slectLevel" style="padding: 3px; outline: none; cursor: pointer;">
+                    <option value="none">select level</option>
+                  </select>
+            </div>
+            <button style="padding: 3px; cursor: pointer;" class="add-stage">Add stage</button>
+          </div>
+        </div>
+        <div class="ground">
+        </div>
+    </div>
+    <div class="flex">
+        <button class="restart">Restart</button>
+        <button class="resetbtn">Reset</button>
+    </div>
+    <div class="level hidden">
+        Solved!! Go to next level
+        <div class="next-level"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062A1.125 1.125 0 013 16.81V8.688zM12.75 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062a1.125 1.125 0 01-1.683-.977V8.688z" />
+          </svg>
+          </div>
+    </div>
+    <div class="container"></div>
+    <script src="index.js"></script>
+</body>
+</html>

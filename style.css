@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(216, 216, 216);
+}
+.btn{
+    width: 60px;
+    padding: 10px 0;
+    text-align: center;
+    background-color: black;
+    color: wheat;
+    margin: 6px 5px;
+    cursor: pointer;
+}
+.container,.ground{
+    width: 80%;
+    margin: auto;
+    background-color: rgb(46, 207, 100);
+    /* margin-top: 50px;
+    margin-bottom: 50px; */
+    display: grid;
+    justify-content: center;
+    /* align-items: center; */
+    border: 1px solid rgb(255, 255, 255);
+    /* grid-gap: 0 0; */
+}
+
+.container > div{
+    height: 100%;
+    /* border: 1px solid white; */
+    background-color: rgb(20, 150, 63);
+}
+
+.ground{
+    grid-template-columns: repeat(18,40px);
+    grid-template-rows: repeat(11,40px);
+    width: 80%;
+    
+}
+
+.box{
+    width: 40px;
+    height: 40px;
+    background: url('box.jpg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.player{
+    width: 40px;
+    height: 40px;
+    background: url('head.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+.ground>div{
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(20, 150, 63);
+}
+
+.container> div>img{
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid rgb(255, 255, 255); */
+}
+.path{
+    background-color: rgb(46, 207, 100) !important;
+}
+
+.ballon{
+    position: relative;
+    background-color: rgba(207, 207, 207, 0.61) !important;
+    box-shadow: 0px 0px 2px rgb(107, 107, 107) inset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ballons{
+    background-color: rgba(146, 146, 146, 0.61) !important;
+}
+.level{
+    background-color: blueviolet;
+    position: fixed;
+    padding: 25px 25px;
+    top: 33%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+    border: 4px solid white;
+    box-shadow: 0 0 10px black inset;
+}
+.next-level{
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    border-radius: 50%;
+    padding: 7px;
+    cursor: pointer;
+    /* border: 3px dashed white; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+.hidden{
+    display: none;
+}
+
+.restart,.resetbtn{
+    display: inline-block;
+    justify-content: center;
+    background-color: blueviolet;
+    padding: 10px 15px;
+    color: rgb(255, 255, 255);
+    margin: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+}
+
+
