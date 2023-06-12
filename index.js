@@ -1,7 +1,7 @@
 class Sokoban{
     constructor(){
         this.gameplay = true
-        this.appenRowCol = true
+        this.appendRowCol = true
         this.faze = true
         this.prevent = true
         this.stageNum = 0
@@ -11,63 +11,63 @@ class Sokoban{
             {
                 'row' : 9,
                 'col' : 8,
-                'pathArr' : [11,12,13,17,18,19,21,27,29,33,37,41,43,44,45,50,54,57,58,59,60,61,62],
+                'pathArr' : [11,12,13,17,18,19,21,27,29,33,37,41,43,44,45,50,54,57,58,59,60,61,62,20,28,36,51,52,53,49],
                 'boxArr' : [20,28,36,51,52,53,49],
                 'headArr' : [18],
-                'ballonArr' : [17,33,44,54,60]
+                'targetArr' : [17,33,44,54,60]
             },
             
             // stage2
             {
-                'ballonArr': [17, 27, 26, 28, 38],
-                'boxArr': [34, 25, 45, 57, 37, 54],
-                'col': 10,
-                'headArr': [77],
-                'pathArr': [13, 14, 15, 17, 18, 23, 32, 42, 51, 61, 62, 63, 53, 52, 33, 28, 38, 58, 68, 78, 77, 66, 65, 67, 57, 47, 37, 27, 26, 24, 34, 35, 36, 36, 36, 55, 56, 45, 25, 54],
-                'row': 9
-            },
-
-            // stage3
-            {
-                'col' : 11,
                 'row' : 9,
-                'pathArr' : [14,15,16,17,25,26,27,28,22,23,36,37,38,39,40,41,42,53,64,75,86,33,34,44,45,46,48,49,50,59,60,61,57,68,79,67,78,80,30,31,29],
+                'col' : 11,
+                'pathArr' : [14,15,16,17,26,27,28,22,23,36,37,38,39,40,41,42,53,64,75,86,33,44,45,46,49,59,60,61,57,68,79,67,78,80,30,31,29,34,35,48,50,25,81,82,83,84,85],
                 'boxArr' : [34,35,48,50,25],
                 'headArr' : [44],
-                'ballonArr' : [81,82,83,84,85]
+                'targetArr' : [81,82,83,84,85]
+            },
+            
+            // stage3
+            {
+                'row': 9,
+                'col': 10,
+                'pathArr': [13, 14, 15, 17, 18, 23, 32, 42, 51, 61, 62, 63, 53, 52, 33, 28, 38, 58, 68, 78, 77, 66, 65, 67, 57, 47, 37, 27, 26, 24, 34, 35, 36, 36, 36, 55, 56, 45, 25, 54],
+                'boxArr': [34, 25, 45, 57, 37, 54],
+                'headArr': [77],
+                'targetArr': [17, 27, 26, 28, 38],
             },
 
             // stage4
-            {
-                'col' : 18,
-                'row' : 11,
-                'pathArr' : [24,25,26,42,43,44,60,61,61,62,78,79,80,81,76,77,94,112,130,127,128,129,109,110,111,96,114,132,150,168,169,170,171,172,136,154,133,134,135,99,117,137,138,139,140,141,142,156,158,157,159,160,63,122,123,124,131,121],
-                'boxArr' : [130,42,62,99,150,128],
-                'headArr' : [156],
-                'ballonArr' : [123,124,141,142,159,160]
-            },  
-            // stage5
             {
                 'row': 10,
                 'col': 18,
                 'pathArr': [42,43,44,45,46,60,77,95,114,115,97,79,78,96,80,81,99,117,64,65,66,67,85,102,84,83,82,100,101,119,120,118],
                 'boxArr': [60,80,101,84],
                 'headArr': [78],
-                'ballonArr': [96,97,115,114]
+                'targetArr': [96,97,115,114]
             },
 
+            // stage5
+            {
+                'row' : 11,
+                'col' : 18,
+                'pathArr' : [24,25,26,42,43,44,60,61,61,62,78,79,80,81,76,77,94,112,130,127,128,129,109,110,111,96,114,132,150,168,169,170,171,172,136,154,133,134,135,99,117,137,138,139,140,141,142,156,158,157,159,160,63,122,123,124,131,121],
+                'boxArr' : [130,42,62,99,150,128],
+                'headArr' : [156],
+                'targetArr' : [123,124,141,142,159,160]
+            },  
+            
             // stage6
             {
                 "row": 10,
                 "col": 18,
-                "pathArr": [37,55,39,40,41,42,60,78,96,114,56,57,133,134,135,97,98,115,25,26,28,29,30,31,32,51,69,87,105,123,141,140,139,119,100,64,46,44,43,61,62,79,50,121,103,102,101,67,66,65,45],
+                "pathArr": [37,55,39,40,41,42,60,78,96,114,56,57,133,134,135,97,98,115,25,26,28,29,30,31,32,51,69,87,105,123,141,140,139,119,100,64,46,44,43,61,62,79,50,121,103,102,101,67,66,65,45,38,80,116,47,83,82,120,85,86,68,104,122,49,74,75,92,93,111,110,128,129,130,131,113,95,94],
                 "boxArr": [38,80,116,47,83,82,120,85,86,68,104,122,49],
                 "headArr": [45],
-                "ballonArr": [74,75,92,93,111,110,128,129,130,131,113,95,94]
+                "targetArr": [74,75,92,93,111,110,128,129,130,131,113,95,94]
             },
-
-           
         ]
+
         this.stagelevel  = this.stages.length
         this.declare()
         this.draw()
@@ -75,6 +75,7 @@ class Sokoban{
     
     declare(){
         this.container = document.querySelector('.container')
+
         this.nextBtn = document.querySelector('.next-level')
         this.level = document.querySelector('.level')
         this.restart = document.querySelector('.restart')
@@ -97,20 +98,22 @@ class Sokoban{
             pathArr : [],
             boxArr : [],
             headArr : [],
-            ballonArr : []
+            targetArr : []
         }
 
         this.addNewStages()
+
         this.stage()
+        
         this.headImg = document.querySelector('.head')
-        this.allBox = document.querySelectorAll('.box')
+        this.allBox = this.container.querySelectorAll('.box')
         this.allDiv = document.getElementsByClassName('allDiv') 
         this.col = +this.container.getAttribute('stepY')
         this.currentPosition = this.stages[this.stageNum].headArr[0]
     }
     
     draw(){
-        this.bringNewStage()    
+        this.bringNewStage()
         this.addRowCol()
         this.nextLevel()
         this.restartStage()
@@ -139,8 +142,127 @@ class Sokoban{
          }
     }
 
+    addNewStages(){
+        let $this = this
+        this.addStage.addEventListener('click',function(){
+
+            if($this.newObj.headArr.length != 0 && $this.newObj.boxArr.length != 0 && $this.newObj.targetArr && $this.newObj.pathArr.length != 0){
+                $this.newObj.col = Number($this.stageCol.value)
+                $this.newObj.row = Number($this.stageRow.value)
+
+                $this.stages.splice($this.stagelevel,0,$this.newObj)
+                $this.container.innerHTML = ''
+                $this.stages
+                $this.stage()
+                $this.declare()
+
+                $this.intialvalue($this)
+
+
+            }else{
+                alert('provide all element')
+            }
+        })
+    }
+    
+    stage(){
+        if(this.stages[this.stageNum] && this.stages.length != 0){
+            let kl = this.stages[this.stageNum]
+            this.container = document.querySelector('.container')
+            this.container.innerHTML = ''
+            this.container.style.gridTemplateColumns = `repeat(${kl.col},40px)`
+            this.container.style.gridTemplateRows = `repeat(${kl.row},40px)`
+            this.container.setAttribute('stepY',kl.col)
+
+            for (let i = 0; i < (kl.col*kl.row); i++){
+                let allDiv = document.createElement('div')
+                allDiv.className = 'allDiv'
+                this.container.append(allDiv)
+            }
+
+            let allDiv = document.querySelectorAll('.allDiv')
+            
+
+            let pathMSGShow;
+            let pathNum = 0
+
+            for(let i=0; i<kl.pathArr.length; i++){
+                if(allDiv[kl.pathArr[i]]){
+                    allDiv[kl.pathArr[i]].classList.add('path')
+                }else{
+                    pathNum++
+                    pathMSGShow = 'path path is out of the ground. Please fix path position'
+                }
+            }
+
+            if(pathNum>0){
+                console.log(pathNum + ' ' + pathMSGShow);
+            }
+
+            let boxMSGShow;
+            let boxNum = 0
+            for(let i=0; i<kl.boxArr.length; i++){
+            let box = document.createElement('img')
+            box.setAttribute('src','box.jpg')
+            box.className = 'box'
+
+                if(
+                    allDiv[kl.boxArr[i]]&&
+                    allDiv[kl.boxArr[i]].innerHTML == '' && 
+                    allDiv[kl.boxArr[i]].classList.contains('allDiv') && 
+                    allDiv[kl.boxArr[i]].classList.contains('path')){
+
+                    allDiv[kl.boxArr[i]].append(box)
+                }else{
+                    boxNum++
+                    boxMSGShow = 'box is not in right place. Please fix box position'
+                }
+            }
+
+            if(boxNum>0){
+                console.log(boxNum+ ' ' + boxMSGShow);
+            }
+
+            let targetMSGShow;
+            let targetNum = 0
+
+            for(let i=0; i<kl.targetArr.length; i++){
+                if(
+                    allDiv[kl.targetArr[i]]&&
+                    allDiv[kl.targetArr[i]].innerHTML == '' && 
+                    allDiv[kl.targetArr[i]].classList.contains('allDiv') && 
+                    allDiv[kl.targetArr[i]].classList.contains('path')
+                ){
+                    allDiv[kl.targetArr[i]].classList.add('path','ballon')
+                }else{
+                    targetNum++
+                    targetMSGShow = 'Target is not in right position. Please fix this first.'
+                }
+            }
+
+            if(targetNum>0){
+                console.log(targetNum+ ' ' + targetMSGShow);
+            }
+
+
+        let headImg = document.createElement('img')
+        headImg.setAttribute('src','head.svg')
+        headImg.className = 'head'
+
+        if(
+            allDiv[kl.headArr] &&
+            allDiv[kl.headArr].innerHTML == '' &&
+            allDiv[kl.headArr].classList.contains('allDiv') && 
+            allDiv[kl.headArr].classList.contains('path')
+        ){
+            allDiv[kl.headArr].append(headImg)
+        }else{
+            console.log('player is not in path');
+        }
+    }
+}
+
     moveHead(cal){
-        
         for (let i = 0; i < this.allBox.length; i++) {
             const box = this.allBox[i];
             if(this.allDiv[this.currentPosition+cal].children[0] == box && this.allDiv[this.currentPosition+cal*2].classList.contains('path')){
@@ -149,6 +271,7 @@ class Sokoban{
             }else{
                 box.parentElement.classList.remove('path')
             }
+            
             if(box.parentElement.classList.contains('ballon')){
                 box.setAttribute('src','box2.png')
             }else{
@@ -167,13 +290,9 @@ class Sokoban{
         let $this = this
             $this.nextBtn.addEventListener('click',function(){
                 $this.level.classList.add('hidden')
-                $this.container.innerHTML = ''
-                $this.stageNum++ 
+                $this.stageNum++
                 $this.stages
-                $this.addNewStages()
-                $this.stage()
                 $this.declare()
-                console.log($this.stages);
             })
     }
 
@@ -194,10 +313,34 @@ class Sokoban{
         })
     }
 
+
+    intialvalue($this){
+        
+        $this.ground.innerHTML = ''
+        $this.ground.style = null
+
+        $this.createStage.classList.add('hidden')
+        $this.newObj.pathArr = []
+        $this.newObj.headArr = []
+        $this.newObj.targetArr = []
+        $this.newObj.boxArr = []
+        $this.giveLevel.innerHTML = ''
+        
+        $this.gameplay = true
+        $this.appendRowCol = true
+
+    }
+
     bringNewStage(){
         let $this = this
         this.createBtn.addEventListener('click',function(){
+
             $this.createStage.classList.remove('hidden')
+            $this.giveLevel.innerHTML = ''
+            let firstmyOption = document.createElement('option' )
+            firstmyOption.innerHTML = 'Select level'
+            $this.giveLevel.append(firstmyOption)
+
             for(let i=0; i<$this.stages.length+1; i++){
                 let myOption = document.createElement('option')
                 myOption.value = i
@@ -207,23 +350,9 @@ class Sokoban{
             }
 
             document.querySelector('.cancel').addEventListener('click',function(){
-                $this.giveLevel.innerHTML = ''
-                $this.createStage.classList.add('hidden')
-                let allDivs = document.querySelectorAll('.Divs')
-                for(let j=0; j<allDivs.length; j++){
-                    allDivs[j].classList.remove('path') 
-                    allDivs[j].classList.remove('box') 
-                    allDivs[j].classList.remove('ballons')
-                    allDivs[j].classList.remove('player')
-                    $this.newObj.pathArr = []
-                        $this.newObj.headArr = []
-                        $this.newObj.ballonArr = []
-                        $this.newObj.boxArr = []
-                        allDivs[j].remove()
-                }
-                $this.gameplay = true
-                $this.appenRowCol = true
+                $this.intialvalue($this)
             })
+
             $this.gameplay = false
         })
     }
@@ -231,17 +360,40 @@ class Sokoban{
     addRowCol(){
         let $this = this
         this.AddRowCOl.addEventListener('click',function(){
+
+            $this.ground.innerHTML = ''
+
+            $this.newObj.pathArr = []
+            $this.newObj.headArr = []
+            $this.newObj.targetArr = []
+            $this.newObj.boxArr = []
+
+            if($this.stageCol.value < $this.stageCol.min){
+                $this.stageCol.value = $this.stageCol.min
+            }
+
+            if($this.stageCol.value > $this.stageCol.max || $this.stageCol.value >= 100){
+                $this.stageCol.value = $this.stageCol.max
+            }
+
+            if($this.stageRow.value < $this.stageRow.min){
+                $this.stageRow.value = $this.stageRow.min
+            }
+
+            if($this.stageRow.value > $this.stageRow.max || $this.stageRow.value >= 100){
+                $this.stageRow.value = $this.stageRow.max
+            }
+
             $this.ground.style.gridTemplateColumns = 'repeat('+ $this.stageCol.value +',40px)'
+            
             $this.ground.style.gridTemplateRows = 'repeat('+ $this.stageRow.value +',40px)'
-            if($this.appenRowCol){
+
             for (let i = 0; i < ($this.stageCol.value*$this.stageRow.value); i++){
                 let allDivs = document.createElement('div')
                 allDivs.className = 'Divs'
-                        $this.ground.append(allDivs)
-                    }
+                $this.ground.append(allDivs)
             }
-            
-            $this.appenRowCol = false
+
             for(let i=0; i<allDivs.length; i++){
                 allDivs[i].addEventListener('click',function(){
                    if($this.faze){
@@ -253,18 +405,13 @@ class Sokoban{
 
             for(let j=0; j<allDivs.length; j++){
                 document.querySelector('.removeAll').addEventListener('click',function(){
-                    allDivs[j].classList.remove('path') 
-                    allDivs[j].classList.remove('box') 
-                    allDivs[j].classList.remove('ballons')
-                    allDivs[j].classList.remove('player')
+                    allDivs[j].className = 'Divs'
                     $this.newObj.pathArr = []
                     $this.newObj.headArr = []
-                    $this.newObj.ballonArr = []
+                    $this.newObj.targetArr = []
                     $this.newObj.boxArr = []
                 })
             }
-
-            
         })
 
         $this.giveLevel.addEventListener('change',function(event){
@@ -302,8 +449,8 @@ class Sokoban{
                                          if(e.target.value == 'target'){
                                              if(!allDivs[j].classList.contains('box','player')){
                                                 allDivs[j].classList.add('ballons','path')
-                                                if(!$this.newObj.ballonArr.includes(j)){
-                                                    $this.newObj.ballonArr.push(j)
+                                                if(!$this.newObj.targetArr.includes(j)){
+                                                    $this.newObj.targetArr.push(j)
                                                  }
                                              }
                                              
@@ -352,9 +499,9 @@ class Sokoban{
                                      if(e.target.value == 'target'){
                                          if(allDivs[j].classList.contains('ballons')){
                                             allDivs[j].classList.remove('ballons')
-                                            if($this.newObj.ballonArr.includes(j)){
-                                               let ind = $this.newObj.ballonArr.indexOf(j)
-                                               $this.newObj.ballonArr.splice(ind,1)
+                                            if($this.newObj.targetArr.includes(j)){
+                                               let ind = $this.newObj.targetArr.indexOf(j)
+                                               $this.newObj.targetArr.splice(ind,1)
                                             }
                                          }
                                      }
@@ -377,70 +524,7 @@ class Sokoban{
                 })
     }
 
-    addNewStages(){
-        let $this = this
-        this.addStage.addEventListener('click',function(){
-            if($this.newObj.headArr.length != 0 && $this.newObj.boxArr.length != 0 && $this.newObj.ballonArr && $this.newObj.pathArr.length != 0){
-                $this.newObj.col = Number($this.stageCol.value)
-                $this.newObj.row = Number($this.stageRow.value)
-
-                $this.stages.splice($this.stagelevel,0,$this.newObj)
-                $this.container.innerHTML = ''
-                $this.stages
-                $this.stage()
-                $this.declare()
-
-                console.log($this.stages);
-                $this.createStage.classList.add('hidden')
-                $this.giveLevel.innerHTML = ''
-                $this.appenRowCol = true
-                $this.gameplay = true
-
-            }else{
-                alert('provide all element')
-            }
-        })
-    }
-    
-    stage(){
-        if(this.stages[this.stageNum] && this.stages.length != 0){
-        let kl = this.stages[this.stageNum]
-        this.container = document.querySelector('.container')
-        this.container.style.gridTemplateColumns = 'repeat('+ kl.col +',40px)'
-        this.container.style.gridTemplateRows = 'repeat('+ kl.row +',40px)'
-        this.container.setAttribute('stepY',kl.col)
-        for (let i = 0; i < (kl.col*kl.row); i++){
-            let allDiv = document.createElement('div')
-            allDiv.className = 'allDiv'
-            this.container.append(allDiv)
-        }
-        let allDiv = document.getElementsByClassName('allDiv')
-
-    for(let i=0; i<kl.pathArr.length; i++){
-        allDiv[kl.pathArr[i]].classList.add('path')
-    }
-
-    for(let i=0; i<kl.boxArr.length; i++){
-    let box = document.createElement('img')
-    box.setAttribute('src','box.jpg')
-    box.className = 'box'
-    if(allDiv[kl.boxArr[i]].innerHTML == ''){
-        allDiv[kl.boxArr[i]].append(box)
-    }
-    }
-
-    for(let i=0; i<kl.ballonArr.length; i++){
-        allDiv[kl.ballonArr[i]].classList.add('path','ballon')
-    }
-
-    let headImg = document.createElement('img')
-    headImg.setAttribute('src','head.svg')
-    headImg.className = 'head'
-        if(allDiv[kl.headArr].innerHTML == ''){
-            allDiv[kl.headArr].append(headImg)
-        }
-    }
-}
+ 
 
     winResult(){
         let ballon = document.querySelectorAll('.ballon')
@@ -453,7 +537,8 @@ class Sokoban{
 
         if(count == ballon.length){
             this.level.classList.remove('hidden')
-            if(this.stages[this.stageNum+1]){
+            // console.log(this.levelNum);
+            if(this.stages[this.stageNum+2]){
                 this.levelNum.innerHTML = this.stageNum+2
             }else{
                 this.level.innerHTML = 'game over'
