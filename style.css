@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -5,7 +7,8 @@
 }
 
 body{
-    background-color: rgb(216, 216, 216);
+    background-color: rgb(194, 194, 194);
+    font-family: 'Roboto', sans-serif;;
 }
 .btn{
     width: 60px;
@@ -17,7 +20,11 @@ body{
     cursor: pointer;
 }
 .container{
-    padding: 60px  0;
+    padding: 40px  0;
+}
+
+.w-250px{
+    width: 250px;
 }
 
 .cancel>svg{
@@ -57,15 +64,13 @@ body{
 }
 .container,.ground{
     margin: auto;
-    background-color: rgb(46, 207, 100);
+    background-color: rgb(167, 167, 167);
     display: grid;
     justify-content: center;
-    border: 1px solid rgb(255, 255, 255);
+    /* border: 1px solid rgb(255, 255, 255); */
 }
-
 .container > div{
     height: 100%;
-    /* border: 1px solid white; */
     background-color: rgb(20, 150, 63);
 }
 
@@ -73,9 +78,28 @@ body{
     grid-template-columns: repeat(18,40px);
     grid-template-rows: repeat(11,40px);
     min-width: 80%;
+    cursor: pointer;
 }
 
-.box{
+.targetDiv{
+    width: 40px;
+    height: 40px;
+    background: white;
+    position: relative;
+    z-index: 99;
+}
+
+.playerDiv{
+    width: 40px;
+    height: 40px;
+    background: url('head.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.box,.boxDiv{
     width: 40px;
     height: 40px;
     background: url('box.jpg');
@@ -83,7 +107,19 @@ body{
     background-size: contain;
     background-repeat: no-repeat;
     position: relative;
-    /* z-index: 9; */
+}
+
+
+.ground:hover .hover-img{
+    display: block;
+    transform: translate(-20%,-20%);
+}
+
+.hover-img{
+    position: fixed;
+    pointer-events: none;
+    opacity: .5;
+    display: none;
 }
 
 .cross{
@@ -108,6 +144,7 @@ body{
 .Divs.box .cross:hover{
     background: red;
     color: white;
+    /* cursor: pointer !important; */
 }
 .Divs.player:hover .cross{
     display: block;
@@ -155,7 +192,7 @@ body{
 }
 
 
-.ground>div{
+.ground>.Divs{
     border: 1px solid rgb(255, 255, 255);
     background-color: rgb(20, 150, 63);
 }
@@ -216,10 +253,10 @@ body{
     padding: 10px 15px;
     color: rgb(255, 255, 255);
     margin: 10px 15px;
-    font-size: 18px;
+    font-size: 15px;
+    border-radius: 3px;
     cursor: pointer;
     border: none;
-    border-radius: 5px;
 }
 
 .flex{
@@ -263,11 +300,9 @@ body{
     margin: 30px;
     cursor: pointer;
 }
-.Divs{
-    cursor: pointer;
-}
+
 .add-element-text{
-    font-size: 20px;
+    font-size: 17px;
     text-transform: capitalize;
     margin-bottom: 16px;
 }
@@ -290,6 +325,8 @@ button{
     text-transform: capitalize;
     border: none;
     cursor: pointer;
+    outline: none;
+
 }
 .addBtn:hover,.AddRowCOl:hover{
     background: blueviolet;
@@ -302,4 +339,16 @@ button{
 }
 .mb-30px{
     margin-bottom: 30px;
+}
+
+.cursor-cell{
+    cursor: cell;
+}
+
+.stage-div{
+    text-align: center;
+    color:rgb(48, 48, 48);
+    text-transform: capitalize;
+    margin-bottom: 16px;
+    font-size: 17px;
 }

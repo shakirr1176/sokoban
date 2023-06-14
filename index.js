@@ -7,6 +7,16 @@ class Sokoban{
         this.addRowColumn = false
         this.stageNum = 0
         this.activeBox = ''
+        this.rowColumnMinMax = {
+            col: {
+                min:10,
+                max:20
+            },
+            row: {
+                min:8,
+                max:12
+            }
+        }
         this.stages = [
             
             // stage1
@@ -71,7 +81,9 @@ class Sokoban{
         ]
 
         this.stagelevel  = 0
+
         this.declare()
+        this.addNewStages()
         this.draw()
     }
     
@@ -79,7 +91,7 @@ class Sokoban{
         this.container = document.querySelector('.container')
         this.stageDivision = document.querySelector('.stage-division')
         this.createStage = document.querySelector('.createStage')
-
+        this.stageNumber = document.querySelector('.stage-number')
 
         this.nextBtn = document.querySelector('.next-level')
         this.level = document.querySelector('.level')
@@ -104,8 +116,6 @@ class Sokoban{
             headArr : [],
             targetArr : []
         }
-
-        this.addNewStages()
 
         this.stage()
         
@@ -152,21 +162,17 @@ class Sokoban{
     addNewStages(){
         let $this = this
         this.addStage.addEventListener('click',function(){
-
-            if($this.newObj.headArr.length != 0 && $this.newObj.boxArr.length != 0 && $this.newObj.targetArr && $this.newObj.pathArr.length != 0){
+            if($this.newObj.headArr.length > 0 && $this.newObj.boxArr.length > 0 && $this.newObj.targetArr.length > 0 && $this.newObj.pathArr.length > 0){
                 $this.newObj.col = Number($this.stageCol.value)
                 $this.newObj.row = Number($this.stageRow.value)
-
                 $this.stages.splice($this.stagelevel,0,$this.newObj)
                 $this.container.innerHTML = ''
-                $this.stages
                 $this.stage()
                 $this.declare()
-
                 $this.intialvalue($this)
-
+                
             }else{
-                alert('provide all element')
+                alert('Please provide all element')
             }
         })
     }
@@ -191,22 +197,33 @@ class Sokoban{
 
             let pathMSGShow;
             let pathNum = 0
+            let wrongPathIndex = []
 
             for(let i=0; i<kl.pathArr.length; i++){
                 if(allDiv[kl.pathArr[i]]){
                     allDiv[kl.pathArr[i]].classList.add('path')
                 }else{
                     pathNum++
-                    pathMSGShow = 'path path is out of the ground. Please fix path position'
+                    wrongPathIndex.push(kl.pathArr[i])
+                    pathMSGShow = 'path is out of the ground. Please fix path position'
                 }
             }
 
             if(pathNum>0){
-                console.log(pathNum + ' ' + pathMSGShow);
+                console.warn(
+                    {
+                        errorMsg: pathNum + ' ' + pathMSGShow,
+                        stage: (this.stageNum+1),
+                        totalPAth: pathNum,
+                        wrongPathIndex: wrongPathIndex
+                    }
+                );
             }
 
             let boxMSGShow;
             let boxNum = 0
+            let wrongBoxIndex = []
+
             for(let i=0; i<kl.boxArr.length; i++){
             let box = document.createElement('img')
             box.setAttribute('src','box.jpg')
@@ -221,16 +238,25 @@ class Sokoban{
                     allDiv[kl.boxArr[i]].append(box)
                 }else{
                     boxNum++
+                    wrongBoxIndex.push(kl.boxArr[i])
                     boxMSGShow = 'box is not in right place. Please fix box position'
                 }
             }
 
             if(boxNum>0){
-                console.log(boxNum+ ' ' + boxMSGShow);
+                console.warn(
+                    {
+                        errorMsg: boxNum + ' ' + boxMSGShow,
+                        stage: (this.stageNum+1),
+                        totalBox: boxNum,
+                        wrongBoxIndex: wrongBoxIndex
+                    }
+                );
             }
 
             let targetMSGShow;
             let targetNum = 0
+            let wrongTargetIndex = [];
 
             for(let i=0; i<kl.targetArr.length; i++){
                 if(
@@ -242,12 +268,20 @@ class Sokoban{
                     allDiv[kl.targetArr[i]].classList.add('path','target')
                 }else{
                     targetNum++
+                    wrongTargetIndex.push(kl.targetArr[i])
                     targetMSGShow = 'Target is not in right position. Please fix this first.'
                 }
             }
 
             if(targetNum>0){
-                console.log(targetNum+ ' ' + targetMSGShow);
+                console.warn(
+                    {
+                        errorMsg: targetNum + ' ' + targetMSGShow,
+                        stage: (this.stageNum+1),
+                        totalTarget: targetNum,
+                        wrongTargetIndex: wrongTargetIndex
+                    }
+                );
             }
 
 
@@ -263,7 +297,7 @@ class Sokoban{
         ){
             allDiv[kl.headArr].append(headImg)
         }else{
-            console.log('player is not in path');
+            console.warn('player is not in path');
         }
     }
 }
@@ -320,10 +354,13 @@ class Sokoban{
     }
 
 
+
     intialvalue($this){
         
         $this.ground.innerHTML = ''
         $this.ground.style = null
+        $this.ground.classList.remove('cursor-cell')
+
 
         $this.createStage.classList.add('hidden')
         $this.stageDivision.classList.remove('hidden')
@@ -379,8 +416,8 @@ class Sokoban{
 
             for(let i=0; i<$this.stages.length+1; i++){
                 let myOption = document.createElement('option')
-                myOption.value = i
-                myOption.innerHTML = i
+                myOption.value = i+1
+                myOption.innerHTML = i+1
                 myOption.className = 'myOption'
                 $this.giveLevel.append(myOption)
             }
@@ -395,42 +432,51 @@ class Sokoban{
     
     addRowCol(){
         let $this = this
+        let stageColStore;
+        let stageRowStore;
         this.AddRowCOl.addEventListener('click',function(){
             $this.resetFunc($this)
 
             $this.addRowColumn = true;
+            $this.ground.classList.add('cursor-cell')
 
-            if($this.stageCol.value < $this.stageCol.min){
-                $this.stageCol.value = $this.stageCol.min
+            stageColStore = $this.stageCol.value
+            stageRowStore = $this.stageRow.value
+
+            if(stageColStore < $this.rowColumnMinMax.col.min){
+                stageColStore = $this.rowColumnMinMax.col.min
             }
 
-            if($this.stageCol.value > $this.stageCol.max || $this.stageCol.value >= 100){
-                $this.stageCol.value = $this.stageCol.max
+            if(stageColStore > $this.rowColumnMinMax.col.max || stageColStore >= 100){
+                stageColStore = $this.rowColumnMinMax.col.max
             }
 
-            if($this.stageRow.value < $this.stageRow.min){
-                $this.stageRow.value = $this.stageRow.min
+            if(stageRowStore < $this.rowColumnMinMax.row.min){
+                stageRowStore = $this.rowColumnMinMax.row.min
             }
 
-            if($this.stageRow.value > $this.stageRow.max || $this.stageRow.value >= 100){
-                $this.stageRow.value = $this.stageRow.max
+            if(stageRowStore > $this.rowColumnMinMax.col.max || stageRowStore >= 100){
+                stageRowStore = $this.rowColumnMinMax.col.max
             }
 
-            $this.ground.style.gridTemplateColumns = 'repeat('+ $this.stageCol.value +',40px)'
+             $this.stageCol.value = stageColStore 
+             $this.stageRow.value = stageRowStore
+
+
+            $this.ground.style.gridTemplateColumns = 'repeat('+ stageColStore +',40px)'
             
-            $this.ground.style.gridTemplateRows = 'repeat('+ $this.stageRow.value +',40px)'
+            $this.ground.style.gridTemplateRows = 'repeat('+ stageRowStore +',40px)'
 
-            for (let i = 0; i < ($this.stageCol.value*$this.stageRow.value); i++){
+            for (let i = 0; i < (stageColStore*stageRowStore); i++){
                 let allDivs = document.createElement('div')
                 allDivs.className = 'Divs'
                 $this.ground.append(allDivs)
             }
-
             // in here
         })
         
         $this.giveLevel.addEventListener('change',function(event){
-            $this.stagelevel = $this.giveLevel.value
+            $this.stagelevel = $this.giveLevel.value-1
         })
     }
 
@@ -470,6 +516,7 @@ class Sokoban{
         })
     }
 
+
     addingElement(){
         let $this = this
                 
@@ -478,6 +525,7 @@ class Sokoban{
             if(e.target.closest('.Divs') && $this.addRowColumn){
 
                 let allDivs = document.querySelectorAll('.Divs')
+
                 let Divs = e.target.closest('.Divs')
                 let indexOfDiv = Array.from(allDivs).indexOf(Divs)
                 
@@ -538,6 +586,7 @@ class Sokoban{
 
             }
         })
+
             // add elemnt active
 
             let addBtn = document.querySelectorAll('.addBtn')
@@ -545,7 +594,9 @@ class Sokoban{
             addBtn.forEach((el,inx)=>{
                 el.addEventListener('click',()=>{
 
-                    if($this.addRowColumn == true){     
+                    // let allDivs = document.querySelectorAll('.Divs')
+
+                    if($this.addRowColumn == true){ 
 
                         for (let k = 0; k < addBtn.length; k++) {
                             if(inx != k){
@@ -557,14 +608,40 @@ class Sokoban{
                         if(el.classList.contains('active')){
                             $this.activeBox = el.innerHTML
                             $this.faze = false
+                            $this.ground.classList.remove('cursor-cell')
                         }else{
+                            
+                            $this.ground.classList.add('cursor-cell')
                             $this.faze = true
                             $this.activeBox = ''
                         }
                     }
+
+                    function moveElement(elmnt){
+                        if($this.activeBox == elmnt){
+                            let imgDiv = document.createElement('div')
+                            imgDiv.className = `hover-img ${elmnt}Div`
+                            $this.ground.prepend(imgDiv)
+                            $this.ground.addEventListener('mousemove', function(e){
+                                let xAxis = e.pageX
+                                let yAxis = e.pageY
+    
+                                imgDiv.style.top = yAxis + 'px'
+                                imgDiv.style.left = xAxis + 'px'
+                            })
+                        }else{
+                            if(document.querySelector(`.${elmnt}Div`)){
+                                document.querySelector(`.${elmnt}Div`).remove()
+                            }
+                        }
+                    }
+
+                    moveElement('box')
+                    moveElement('target')
+                    moveElement('player')
+
                 })
             })
-
     }
 
     winResult(){
