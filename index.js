@@ -180,6 +180,7 @@ class Sokoban{
     stage(){
         if(this.stages[this.stageNum] && this.stages.length != 0){
             let kl = this.stages[this.stageNum]
+            this.stageNumber.innerHTML = this.stageNum+1
             this.container = document.querySelector('.container')
             this.container.innerHTML = ''
             this.container.style.gridTemplateColumns = `repeat(${kl.col},40px)`
