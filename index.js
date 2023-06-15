@@ -40,44 +40,44 @@ class Sokoban{
             },
             
             // stage3
-            {
-                'row': 9,
-                'col': 10,
-                'pathArr': [13, 14, 15, 17, 18, 23, 32, 42, 51, 61, 62, 63, 53, 52, 33, 28, 38, 58, 68, 78, 77, 66, 65, 67, 57, 47, 37, 27, 26, 24, 34, 35, 36, 36, 36, 55, 56, 45, 25, 54],
-                'boxArr': [34, 25, 45, 57, 37, 54],
-                'headArr': [77],
-                'targetArr': [17, 27, 26, 28, 38],
-            },
+            // {
+            //     'row': 9,
+            //     'col': 10,
+            //     'pathArr': [13, 14, 15, 17, 18, 23, 32, 42, 51, 61, 62, 63, 53, 52, 33, 28, 38, 58, 68, 78, 77, 66, 65, 67, 57, 47, 37, 27, 26, 24, 34, 35, 36, 36, 36, 55, 56, 45, 25, 54],
+            //     'boxArr': [34, 25, 45, 57, 37, 54],
+            //     'headArr': [77],
+            //     'targetArr': [17, 27, 26, 28, 38],
+            // },
 
-            // stage4
-            {
-                'row': 10,
-                'col': 18,
-                'pathArr': [42,43,44,45,46,60,77,95,114,115,97,79,78,96,80,81,99,117,64,65,66,67,85,102,84,83,82,100,101,119,120,118],
-                'boxArr': [60,80,101,84],
-                'headArr': [78],
-                'targetArr': [96,97,115,114]
-            },
+            // // stage4
+            // {
+            //     'row': 10,
+            //     'col': 18,
+            //     'pathArr': [42,43,44,45,46,60,77,95,114,115,97,79,78,96,80,81,99,117,64,65,66,67,85,102,84,83,82,100,101,119,120,118],
+            //     'boxArr': [60,80,101,84],
+            //     'headArr': [78],
+            //     'targetArr': [96,97,115,114]
+            // },
 
-            // stage5
-            {
-                'row' : 11,
-                'col' : 18,
-                'pathArr' : [24,25,26,42,43,44,60,61,61,62,78,79,80,81,76,77,94,112,130,127,128,129,109,110,111,96,114,132,150,168,169,170,171,172,136,154,133,134,135,99,117,137,138,139,140,141,142,156,158,157,159,160,63,122,123,124,131,121],
-                'boxArr' : [130,42,62,99,150,128],
-                'headArr' : [156],
-                'targetArr' : [123,124,141,142,159,160]
-            },  
+            // // stage5
+            // {
+            //     'row' : 11,
+            //     'col' : 18,
+            //     'pathArr' : [24,25,26,42,43,44,60,61,61,62,78,79,80,81,76,77,94,112,130,127,128,129,109,110,111,96,114,132,150,168,169,170,171,172,136,154,133,134,135,99,117,137,138,139,140,141,142,156,158,157,159,160,63,122,123,124,131,121],
+            //     'boxArr' : [130,42,62,99,150,128],
+            //     'headArr' : [156],
+            //     'targetArr' : [123,124,141,142,159,160]
+            // },  
             
             // stage6
-            {
-                "row": 10,
-                "col": 18,
-                "pathArr": [37,55,39,40,41,42,60,78,96,114,56,57,133,134,135,97,98,115,25,26,28,29,30,31,32,51,69,87,105,123,141,140,139,119,100,64,46,44,43,61,62,79,50,121,103,102,101,67,66,65,45,38,80,116,47,83,82,120,85,86,68,104,122,49,74,75,92,93,111,110,128,129,130,131,113,95,94],
-                "boxArr": [38,80,116,47,83,82,120,85,86,68,104,122,49],
-                "headArr": [45],
-                "targetArr": [74,75,92,93,111,110,128,129,130,131,113,95,94]
-            },
+            // {
+            //     "row": 10,
+            //     "col": 18,
+            //     "pathArr": [37,55,39,40,41,42,60,78,96,114,56,57,133,134,135,97,98,115,25,26,28,29,30,31,32,51,69,87,105,123,141,140,139,119,100,64,46,44,43,61,62,79,50,121,103,102,101,67,66,65,45,38,80,116,47,83,82,120,85,86,68,104,122,49,74,75,92,93,111,110,128,129,130,131,113,95,94],
+            //     "boxArr": [38,80,116,47,83,82,120,85,86,68,104,122,49],
+            //     "headArr": [45],
+            //     "targetArr": [74,75,92,93,111,110,128,129,130,131,113,95,94]
+            // },
         ]
 
         this.stagelevel  = 0
@@ -167,7 +167,7 @@ class Sokoban{
                 $this.newObj.row = Number($this.stageRow.value)
                 $this.stages.splice($this.stagelevel,0,$this.newObj)
                 $this.container.innerHTML = ''
-                $this.stage()
+                console.log($this.stages);
                 $this.declare()
                 $this.intialvalue($this)
                 
@@ -331,6 +331,7 @@ class Sokoban{
         let $this = this
             $this.nextBtn.addEventListener('click',function(){
                 $this.level.classList.add('hidden')
+                $this.level.classList.remove('scale-control')
                 $this.stageNum++
                 $this.stages
                 $this.declare()
@@ -342,7 +343,6 @@ class Sokoban{
             $this.restart.addEventListener('click',function(){
                 if($this.prevent){
                     $this.container.innerHTML = ''
-                    $this.stage()
                     $this.declare()
                 }
             })
@@ -350,7 +350,7 @@ class Sokoban{
 
     reset(){
         this.resetbtn.addEventListener('click',function(){
-            window.location.replace(window.location.pathname + window.location.search + window.location.hash);
+            window.location.reload();
         })
     }
 
@@ -656,7 +656,9 @@ class Sokoban{
 
         if(count == target.length){
             this.level.classList.remove('hidden')
-            if(this.stages[this.stageNum+2]){
+            this.level.classList.add('scale-control')
+
+            if(this.stages[this.stageNum+1]){
                 this.levelNum.innerHTML = this.stageNum+2
             }else{
                 this.level.innerHTML = 'game over'
